@@ -6,6 +6,13 @@ This repo contains docker-compose that runs Traefik on a server.
 
 - Create `.env` file - see `.env.example`
 
+- Create `acme.json` file and give it permissions:
+
+```sh
+touch acme.json
+chmod 600 acme.json
+```
+
 - Create some hashed password - example:
 
 ```sh
