@@ -1,0 +1,17 @@
+http:
+  middlewares:
+    simpleAuth:
+      basicAuth:
+        usersFile: "usersfile.txt"
+
+  routers:
+    api:
+      rule: "Host(`monitor.bladesheng.com`)"
+      entrypoints:
+        - "websecure"
+      middlewares:
+        - "simpleAuth"
+      service: "api@internal"
+
+      tls:
+        certResolver: "myresolver"

@@ -1,0 +1,38 @@
+log:
+  level: "INFO"
+
+entryPoints:
+  web:
+    address: ":80"
+
+    http:
+      redirections:
+        entryPoint:
+          to: "websecure"
+          scheme: "https"
+
+  websecure:
+    address: ":443"
+
+api:
+  insecure: true
+  dashboard: true
+
+certificatesResolvers:
+  myresolver:
+    acme:
+      email: "keadr23@gmail.com"
+      storage: "acme.json"
+      # Optionally use the staging server to prevent exhausting rate limits
+      # caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+      httpChallenge:
+        entryPoint: "web"
+
+providers:
+  docker:
+    exposedByDefault: false
+    watch: true
+    network: "web"
+
+  file:
+    filename: "traefik_dynamic.yaml"

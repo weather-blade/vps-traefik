@@ -1,0 +1,1 @@
+admin:YOUR_HASHED_PASSWORD
