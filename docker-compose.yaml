@@ -13,10 +13,6 @@ services:
       - ./usersfile.txt:/usersfile.txt
     networks:
       - web
-    logging:
-      driver: loki
-      options:
-        loki-url: ${LOKI_URL}
 
 networks:
   web:
